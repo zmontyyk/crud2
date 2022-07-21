@@ -1,4 +1,3 @@
-import React from "react"
 
 interface Actions{
     type:string
@@ -7,7 +6,6 @@ interface Actions{
 
 const initialState=  {
   userList: [],
-  error: " "
 }
   
 
@@ -17,7 +15,7 @@ const initialState=  {
         return {
           ...state,  
           isLoding:true
-        }
+        } 
       case "GET_DATA_SUCCESS":
         return {
           ...state,
