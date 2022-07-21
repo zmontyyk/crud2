@@ -1,11 +1,31 @@
 import React from 'react'
+import { useEffect } from 'react'
+import {Fetch_DATA,} from '../Actions/action'
+import { useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
+import {employeeData} from '../models/models'
+import { Dispatch } from 'redux';
+
+function Getting_Emp() {
+   const dispatch = useDispatch<any>()
+   const All_employes = useSelector((state:any)=>{
+    return state
+   })
+// console.log(All_employes);
 
 
-function Home() {
-    return (
-        <div>
 
-            <table className="table table-striped table-hover mt-5 ">
+  useEffect(()=>{
+    dispatch(Fetch_DATA())
+  })
+
+
+
+
+
+  return (
+    <div>
+      <table className="table table-striped table-hover mt-5 ">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -35,10 +55,8 @@ function Home() {
                     </tr>
                 </tbody>
             </table>
-
-
-        </div>
-    )
+    </div>
+  )
 }
 
-export default Home
+export default Getting_Emp

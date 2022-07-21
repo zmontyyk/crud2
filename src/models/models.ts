@@ -10,3 +10,8 @@ export interface employeeData {
 
 
 }
+
+
+export interface RootState{
+  
+}

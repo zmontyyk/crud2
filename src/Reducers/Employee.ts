@@ -6,7 +6,6 @@ interface Actions{
 }
 
 const initialState=  {
-  isLoading: false ,
   userList: [],
   error: " "
 }

@@ -1,10 +1,18 @@
 import {employeeData} from '../models/models'
-
+import axios from 'axios'
+import { Dispatch } from 'redux';
 
 export const  Fetch_DATA =()=>{
-   return{
-    type:"ALL"
-   }
+  return async (dispatch: any) => {
+    dispatch(GettingData())
+    try {
+      const res = await axios.get('http://localhost:3000/employees')
+      dispatch(fetchData(res.data))
+
+    }catch (error) {
+      dispatch(fetchDataFail('NO DATA FOUND'))
+    }
+  }
 }
 
 
