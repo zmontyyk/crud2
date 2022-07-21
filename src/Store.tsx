@@ -1,9 +1,13 @@
-import React from 'react'
+import { createStore,applyMiddleware,compose } from 'redux'
+import thunk from 'redux-thunk'
 
-function Store() {
-  return (
-    <div>Store</div>
-  )
-}
-
-export default Store
+const store = createStore(
+  rootReducer,
+  compose(
+    applyMiddleware(thunk),
+    )
+    
+    )
+    
+    export default store
+    import rootReducer from './Reducers'
