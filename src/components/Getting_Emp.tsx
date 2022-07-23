@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { Fetch_DATA, } from '../Actions/action'
 import { useDispatch, useSelector } from 'react-redux'
 import { employeeData } from '../models/models'
 import { Dispatch } from 'redux';
+import Remove_User from './Remove_User'
 
 function Getting_Emp() {
   const dispatch = useDispatch<any>()
+  const [deleteID, setDeleteID] = useState<employeeData>()
+
 
 
 
@@ -21,9 +24,7 @@ function Getting_Emp() {
     return state.FETCHING_DATA.userList
   })
 
-  const Remove=()=>{
-    alert('hey')
-  }
+
 
   const Edit=()=>{
     alert('hey')
@@ -46,28 +47,26 @@ function Getting_Emp() {
         {All_Employee_Data.userList <0? <h1>hello</h1>:
         <tbody>
          
-            {All_Employee_Data.map((value:any  ) => {
+            {All_Employee_Data.map((value:employeeData  ) => {
               return (
-                <React.Fragment>
+                <React.Fragment key={value.id} >
                    <tr>
                   <th>{value.firstName}</th>
                   <td>{value.lastName}</td>
                   <td>{value.email}</td>
                   <td>{value.age}</td>
                   <td>{value.gender}</td>
-                  <td><i onClick={()=>Remove()} className="fa-solid red fa-trash-can"></i>
+                  <td><i onClick={()=>setDeleteID(value)} className="fa-solid red fa-trash-can"></i>
                   <i  onClick={()=>Edit()}  className="fa-solid EDIT fa-pen-to-square"></i>
                   </td>
                   </tr>
                 </React.Fragment>
               )
             })}
-
-         
-
         </tbody>
         }
       </table>
+      <Remove_User deleteID={deleteID}  />
     </div>
   )
 }
