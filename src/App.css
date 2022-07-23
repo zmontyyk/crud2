@@ -2,3 +2,14 @@
 .NODATA{
  
 }
+
+.red{
+    color: red !important;
+     cursor: pointer;
+}
+
+
+.EDIT{
+    margin-left: 15px !important;
+    cursor: pointer;
+}

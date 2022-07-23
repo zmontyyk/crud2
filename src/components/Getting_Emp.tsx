@@ -21,11 +21,17 @@ function Getting_Emp() {
     return state.FETCHING_DATA.userList
   })
 
+  const Remove=()=>{
+    alert('hey')
+  }
 
+  const Edit=()=>{
+    alert('hey')
+  }
 
 
   return (
-    <div>
+    <div className=''>
       <table className="table table-striped table-hover mt-5 ">
         <thead>
           <tr>
@@ -49,6 +55,9 @@ function Getting_Emp() {
                   <td>{value.email}</td>
                   <td>{value.age}</td>
                   <td>{value.gender}</td>
+                  <td><i onClick={()=>Remove()} className="fa-solid red fa-trash-can"></i>
+                  <i  onClick={()=>Edit()}  className="fa-solid EDIT fa-pen-to-square"></i>
+                  </td>
                   </tr>
                 </React.Fragment>
               )
