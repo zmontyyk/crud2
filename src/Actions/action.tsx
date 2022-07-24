@@ -16,6 +16,23 @@ export const  Fetch_DATA =(()=>{
 })
 
 
+
+export const  REMOVE_USER =((id:number)=>{
+  return async (dispatch: any) => {
+  
+  try {
+    const res = await  axios.delete(`http://localhost:3000/employees/${id}`)  
+   console.log(res)
+   dispatch(Fetch_DATA())
+  }catch (error) {
+
+   console.log(error)
+  }
+}
+})
+
+
+
 export const GettingData = (() => {
     return {
       type: "GETTING_DATA",
