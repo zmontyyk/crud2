@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { employeeData } from "../models/models";
 import { Dispatch } from "redux";
 import Remove_User from "./Remove_User";
+import  Edit_User from './Edit_User'
 
-function Getting_Emp() {
+function Table() {
   const dispatch = useDispatch<any>();
   const [deleteID, setDeleteID] = useState<any>();
- 
- 
+
   useEffect(() => {
     dispatch(Fetch_DATA());
   }, []);
@@ -22,12 +22,12 @@ function Getting_Emp() {
 
   //  DELETE ID Clean up function
   const cleanUp = () => {
-    setDeleteID({})
-  }
+    setDeleteID({});
+  };
 
   const Edit = () => {
     alert("hey");
-  }
+  };
 
   return (
     <div className="">
@@ -50,7 +50,8 @@ function Getting_Emp() {
               return (
                 <React.Fragment key={value.id}>
                   <tr>
-                    <th>{value.firstName}</th>
+                      <Edit_User/>
+                    <td>{value.firstName}</td>
                     <td>{value.lastName}</td>
                     <td>{value.email}</td>
                     <td>{value.age}</td>
@@ -77,4 +78,4 @@ function Getting_Emp() {
   );
 }
 
-export default Getting_Emp;
+export default Table;

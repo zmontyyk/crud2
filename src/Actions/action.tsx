@@ -23,7 +23,7 @@ export const  REMOVE_USER =((id:number)=>{
   try {
     const res = await  axios.delete(`http://localhost:3000/employees/${id}`)  
    console.log(res)
-   dispatch(Fetch_DATA())
+   dispatch(Fetch_DATA( ))
   }catch (error) {
 
    console.log(error)

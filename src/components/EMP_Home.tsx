@@ -1,5 +1,5 @@
 import React from 'react'
-import Getting_Emp from './Getting_Emp'
+import Getting_Emp from './Table'
 
 
 function Home() {

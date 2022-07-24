@@ -13,3 +13,9 @@
     margin-left: 15px !important;
     cursor: pointer;
 }
+
+.delete{
+    position: relative;
+    left: 20px !important;
+    background-color: rgb(139, 79, 0);
+}

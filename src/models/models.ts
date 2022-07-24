@@ -6,7 +6,7 @@ export interface employeeData {
     email: string
     age: number | string
     gender: string
-    id: number | string
+    id: any 
 
 
 }
