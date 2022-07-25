@@ -5,6 +5,8 @@ import { REMOVE_USER } from "../Actions/action";
 import { useDispatch } from "react-redux";
 
 function Remove_User({ deleteID, cleanUp }: any) {
+  console.log(deleteID);
+  
   const dispatch = useDispatch<any>();
   const [show, setShow] = useState(false);
 

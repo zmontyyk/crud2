@@ -53,3 +53,10 @@ export const GettingData = (() => {
   })
   
   
+  export const DeleteID =(data:employeeData)=>{
+    return{
+      type:"DELETE_DATA",
+      payload:data
+    }
+
+  }

@@ -29,6 +29,12 @@ const initialState=  {
           isLoding: false,
           error:action.payload
         }
+      case "DELETE_DATA":
+        return {
+          ...state,
+          isLoding: false,
+          error:action.payload
+        }
       default: return state
     }
   }

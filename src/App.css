@@ -16,6 +16,14 @@
 
 .delete{
     position: relative;
-    left: 20px !important;
-    background-color: rgb(139, 79, 0);
+    right: 10px !important;
+   
+}
+
+.containe{
+    padding: 20px;
+}
+
+.gren{
+    color: green;
 }
