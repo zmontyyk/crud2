@@ -3,28 +3,31 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { REMOVE_USER } from "../Actions/action";
 import { useDispatch } from "react-redux";
+import { Remove_User_Props } from "../models/models";
 
-function Remove_User({ deleteID, cleanUp }: any) {
 
-  
+
+function Remove_User({ deleteID, cleanUp }: Remove_User_Props) {
+
+
   const dispatch = useDispatch<any>();
   const [show, setShow] = useState(false);
 
   const handleCloseNO = () => {
-    setShow(false);
-    cleanUp();
+    setShow(false)
+    cleanUp()
   };
   const handleCloseYES = (id: number) => {
-    setShow(false);
-    cleanUp();
+    setShow(false)
+    cleanUp()
     dispatch(REMOVE_USER(id));
   };
 
   useMemo(() => {
     if (deleteID?.firstName?.length > 0) {
-      setShow(true);
+      setShow(true)
     }
-  }, [deleteID]);
+  }, [deleteID])
 
   return (
     <div>

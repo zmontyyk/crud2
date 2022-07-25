@@ -1,23 +1,35 @@
 import React, { useState } from 'react'
 import { EDit_ROW_ID } from '../Actions/action'
-import Remove_User from './Remove_User'
+import Remove_User from './RemoveUser'
 import { useDispatch } from 'react-redux'
 import 'animate.css';
+import { employeeData } from '../models/models';
 
-const ReadOnly = ({ value }: any) => {
+
+interface props{
+  value:employeeData
+  addNewRow: (value: boolean) => void
+}
+
+
+const ReadOnly = ({ value,addNewRow }: props) => {
 
   const [deleteID, setDeleteID] = useState<any>()
+  console.log(deleteID);
+  
   const dispatch = useDispatch()
 
   //  DELETE ID Clean up function
   const cleanUp = () => {
-    setDeleteID({});
+    setDeleteID({})
+   
   }
 
-  const Edit = (value:any) => {
+  const Edit = (value:employeeData) => {
     dispatch(EDit_ROW_ID(value))
-
+    addNewRow(false)
   }
+
 
   return (
     <>
@@ -31,6 +43,7 @@ const ReadOnly = ({ value }: any) => {
           <i
             onClick={() => setDeleteID(value)}
             className="fa-solid shadow red fa-trash-can"
+
           ></i>
           <i
             onClick={() => Edit(value)}

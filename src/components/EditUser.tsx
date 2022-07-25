@@ -5,16 +5,19 @@ import { useFormContext } from "react-hook-form";
 import { useSelector } from "react-redux";
 import { useMemo } from "react"
 import 'animate.css';
+import { Dispatch } from 'redux';
+import { singleRootState } from "../models/models";
 
 
 function Edit_User() {
-  const dispatch = useDispatch<any>()
+  const dispatch = useDispatch<Dispatch>()
 
 
   
-  const editTableData = useSelector((state: any) => {
+  const editTableData = useSelector((state: singleRootState) => {
     return state.FETCHING_DATA.data
   })
+
 
 
 
@@ -29,6 +32,7 @@ function Edit_User() {
 
   //  setting data into feilds
   useMemo(() => {
+   
     setValue('firstName', editTableData.firstName)
     setValue('lastName', editTableData.lastName)
     setValue('email', editTableData.email)
@@ -37,8 +41,6 @@ function Edit_User() {
   }, [editTableData])
 
 // submit updated values 
-
-
   return (
 
     <>
@@ -79,7 +81,7 @@ function Edit_User() {
             className="fa-solid shadow red fa-ban"
           ></i>
 
-          <button className="bt" type="submit"  >  <i
+          <button id="editRow" className="bt" type="submit"  >  <i
             className="fa-solid shadow gren EDIT fa-floppy-disk"
           ></i></button>
         </td>

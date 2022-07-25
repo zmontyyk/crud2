@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Dispatch } from 'redux';
 
 export const Fetch_DATA = (() => {
-  return async (dispatch: any) => {
+  return async (dispatch: Dispatch) => {
     dispatch(GettingData())
     try {
       const res = await axios.get('http://localhost:3000/employees')
@@ -18,7 +18,7 @@ export const Fetch_DATA = (() => {
 
 
 export const REMOVE_USER = ((id: number) => {
-  return async (dispatch: any) => {
+  return async (dispatch:any ) => {
     try {
       const res = await axios.delete(`http://localhost:3000/employees/${id}`)
       console.log(res)
@@ -67,6 +67,19 @@ export const UPDATE_USER = (fromvalue:any,id:number) => {
   return async (dispatch: any) => {
     try {
       const res = await axios.put(`http://localhost:3000/employees/${id}`,fromvalue)
+      dispatch(Fetch_DATA())
+    } catch (error) {
+
+      console.log(error)
+    }
+  }
+} 
+export const ADD_USER = (fromvalue:any) => {
+
+  return async (dispatch: any) => {
+    try {
+      const res = await axios.post(`http://localhost:3000/employees`,fromvalue)
+      console.log(res)
       dispatch(Fetch_DATA())
     } catch (error) {
 

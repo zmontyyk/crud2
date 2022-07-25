@@ -104,3 +104,12 @@
 .shadow {
   font-size: 19px;
 }
+
+.add{
+  box-shadow: -2px 2px 11px 1px red !important;
+}
+
+:root {
+  --animate-duration: 600ms;
+  --animate-delay: 0.6s;
+}
