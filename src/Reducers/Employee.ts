@@ -6,6 +6,7 @@ interface Actions{
 
 const initialState=  {
   userList: [],
+  data:{}
 }
   
 
@@ -29,11 +30,10 @@ const initialState=  {
           isLoding: false,
           error:action.payload
         }
-      case "DELETE_DATA":
+      case "EDit_ROW":
         return {
           ...state,
-          isLoding: false,
-          error:action.payload
+          data:action.payload
         }
       default: return state
     }

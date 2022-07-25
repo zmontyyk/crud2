@@ -1,26 +1,27 @@
 import React, { useState } from 'react'
-import { DeleteID } from '../Actions/action'
-import Remove_User from './Remove_User';
-
+import { EDit_ROW_ID } from '../Actions/action'
+import Remove_User from './Remove_User'
+import { useDispatch } from 'react-redux'
+import 'animate.css';
 
 const ReadOnly = ({ value }: any) => {
 
   const [deleteID, setDeleteID] = useState<any>()
-  console.log(deleteID);
-
+  const dispatch = useDispatch()
 
   //  DELETE ID Clean up function
   const cleanUp = () => {
     setDeleteID({});
-  };
+  }
 
-  const Edit = () => {
+  const Edit = (value:any) => {
+    dispatch(EDit_ROW_ID(value))
 
-  };
+  }
 
   return (
     <>
-      <tr>
+      <tr className='animate__animated animate__fadeIn ' >
         <td>{value.firstName}</td>
         <td>{value.lastName}</td>
         <td>{value.email}</td>
@@ -29,11 +30,11 @@ const ReadOnly = ({ value }: any) => {
         <td>
           <i
             onClick={() => setDeleteID(value)}
-            className="fa-solid red fa-trash-can"
+            className="fa-solid shadow red fa-trash-can"
           ></i>
           <i
-            onClick={() => Edit()}
-            className="fa-solid EDIT fa-pen-to-square"
+            onClick={() => Edit(value)}
+            className="fa-solid shadow EDIT fa-pen-to-square"
           ></i>
         </td>
       </tr>

@@ -1,29 +1,106 @@
-
-.NODATA{
- 
+.NODATA {
 }
 
-.red{
-    color: red !important;
-     cursor: pointer;
+.red {
+  color: red !important;
+  cursor: pointer;
 }
 
-    
-.EDIT{
-    margin-left: 15px !important;
-    cursor: pointer;
+.EDIT {
+  margin-left: 15px !important;
+  cursor: pointer;
 }
 
-.delete{
-    position: relative;
-    right: 10px !important;
-   
+.delete {
+  position: relative;
+  right: 10px !important;
 }
 
-.containe{
-    padding: 20px;
+.containe {
+  padding: 20px;
 }
 
-.gren{
-    color: green;
+.gren {
+  color: green;
+}
+
+.edit {
+  transition: ease-in-out;
+}
+
+.bt {
+  border: none;
+}
+
+
+
+/* <button class="button-17" role="button">Button 17</button> */
+
+/* CSS */
+.button-17 {
+    color: white !important;
+  align-items: center;
+  appearance: none;
+  background-color: #28282B;
+  border-radius: 24px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #3c4043;
+  cursor: pointer;
+  display: inline-flex;
+  fill: currentcolor;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: 0.25px;
+  line-height: normal;
+  max-width: 100%;
+  overflow: visible;
+  padding: 2px 24px;
+  text-align: center;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  width: auto;
+  will-change: transform, opacity;
+  z-index: 0;
+  position: relative;
+  float: right;
+  top: 12px;
+  right: 100px;
+  font-weight: 600;
+}
+
+.button-17:hover {
+  background: #f6f9fe;
+  color: black !important;
+}
+
+
+
+.button-17:not(:disabled):hover {
+  box-shadow: rgba(60, 64, 67, 0.3) 0 2px 3px 0,
+    rgba(60, 64, 67, 0.15) 0 6px 10px 4px;
+}
+
+.button-17:not(:disabled):focus {
+  box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0,
+    rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+}
+
+.button-17:not(:disabled):active {
+  box-shadow: rgba(60, 64, 67, 0.3) 0 4px 4px 0,
+    rgba(60, 64, 67, 0.15) 0 8px 12px 6px;
+}
+
+.button-17:disabled {
+  box-shadow: rgba(60, 64, 67, 0.3) 0 1px 3px 0,
+    rgba(60, 64, 67, 0.15) 0 4px 8px 3px;
+}
+
+.shadow {
+  font-size: 19px;
 }

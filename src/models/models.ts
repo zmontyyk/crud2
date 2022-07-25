@@ -15,3 +15,9 @@ export interface employeeData {
 export interface RootState{
   
 }
+
+
+export   type Inputs = {
+    FirstName: string,
+    exampleRequired: string,
+  };
