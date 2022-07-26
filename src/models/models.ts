@@ -2,6 +2,7 @@ import { type } from "os"
 
 
 export interface employeeData {
+    length: number
     map(arg0: (value: employeeData) => JSX.Element): import("react").ReactNode
     userList: number
     firstName: string
@@ -36,7 +37,7 @@ export interface RootState {
 export type Inputs = {
     firstName?: string
     lastName?: string
-    email?: string
+    email?: string | number
     age?: number | string
     gender?: string
     id?: string | number

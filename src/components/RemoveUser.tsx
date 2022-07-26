@@ -30,7 +30,7 @@ function Remove_User({ deleteID, cleanUp }: Remove_User_Props) {
   }, [deleteID])
 
   return (
-    <div>
+    <div >
       <Modal show={show}>
         <Modal.Header onClick={() => handleCloseNO()} closeButton>
           <Modal.Title>Delete User !!!</Modal.Title>

@@ -1,11 +1,10 @@
 import './App.css';
-import Home from './components/EMP_Home';
-import Getting_Emp from './components/Table';
+import HomePage from './components/HomePage';
+
 function App() {
   return (
-    <div className="App">
-     <Home/>
-     <Getting_Emp/>
+    <div>
+     <HomePage/>
     </div>
   );
 }

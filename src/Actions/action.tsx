@@ -62,7 +62,7 @@ export const EDit_ROW_ID = (data: employeeData | null) => {
 
 
 export const UPDATE_USER = (fromvalue:any,id:number) => {
-  console.log(fromvalue,id);
+  
   
   return async (dispatch: any) => {
     try {
@@ -75,6 +75,7 @@ export const UPDATE_USER = (fromvalue:any,id:number) => {
   }
 } 
 export const ADD_USER = (fromvalue:any) => {
+console.log(fromvalue)
 
   return async (dispatch: any) => {
     try {

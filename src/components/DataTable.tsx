@@ -1,24 +1,25 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { useEffect } from "react";
 import { ADD_USER, EDit_ROW_ID, Fetch_DATA, UPDATE_USER } from "../Actions/action";
 import { useDispatch, useSelector } from "react-redux";
 import { employeeData, Inputs, RootState } from "../models/models";
-import Edit_User from './EditUser'
-import ReadOnly from "./ReadOnly";
+import Edit_User from './EditRows'
+import ReadOnly from "./ReadOnlyRows";
 import { useForm, FormProvider } from "react-hook-form";
-import AddNewUser from "./AddNewUser";
+import AddNewUser from "./AddNewEntry";
 
-function Table() {
+function DataTable() {
   const dispatch = useDispatch<any>()
 
   const [showAddrow, setshowAddrow] = useState<boolean>(false)
 
   // new row add function
-  const addNewRow = (value:boolean) => {
+  const addNewRow = (value: boolean) => {
     setshowAddrow(value)
   }
 
-  const addRowFlag=()=>{
+  const addRowFlag = () => {
+    console.log('addRowFlag')
     setshowAddrow(true)
     dispatch(EDit_ROW_ID(null))
   }
@@ -40,35 +41,39 @@ function Table() {
 
 
   // getting id to update user for put method
-  const editId = useSelector((state:RootState ) => {
+  const editId = useSelector((state: RootState) => {
     return state.FETCHING_DATA.data?.id
   })
 
   //  useFrom onsubmit method ++++++++
-  const methods = useForm();
-  const onSubmit = (data: Inputs, event:any) => {
+  const methods = useForm({
+  
+  })
+  const onSubmit = (data: Inputs, event: any) => {
     const newRow = event.nativeEvent.submitter.id
-    
+
     if (newRow === 'newRow') {
       dispatch(ADD_USER(data))
       setshowAddrow(false)
+
     } else {
       dispatch(UPDATE_USER(data, editId))
       dispatch(EDit_ROW_ID(null))
     }
   }
 
-
+ 
+          
 
   return (
-    <div className="container-fluid animate__animated  animate__fadeIn" >
-      <button className="button-17 mb-3" onClick={() => addRowFlag()} >ADD</button>
+    <div className="animate__animated  animate__fadeIn " >
+      <button   className="button-17" onClick={() => addRowFlag()} >ADD</button>
       <FormProvider {...methods} >
-        <form onSubmit={methods.handleSubmit(onSubmit)} >
-          <table className="table table-striped table-hover m-1 mt-5 ">
-            <thead>
-              <tr className="">
-                <th scope="col">First Name</th>
+        <form className="container-fluid" onSubmit={methods.handleSubmit(onSubmit)} >
+          <table className="table table-striped table-hover  ">
+            <thead >
+              <tr >
+                <th  scope="col">First Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Age</th>
@@ -76,23 +81,28 @@ function Table() {
                 <th scope="col">Actions</th>
               </tr>
             </thead>
-              <tbody>
-                {All_Employee_Data.map((value: employeeData) => {
-                  return (
-                    <React.Fragment key={value.id}>
-                      {show_Edit_Row?.id === value.id ? <Edit_User   /> : <ReadOnly addNewRow={addNewRow} value={value} />}
-                    </React.Fragment>
-                  )
-                })}
+            <tbody>
+              {All_Employee_Data.map((value: employeeData) => {
+                return (
+                  <React.Fragment key={value.id}>
+                    {show_Edit_Row?.id === value.id ? <Edit_User /> : <ReadOnly addNewRow={addNewRow} value={value} />}
+                  </React.Fragment>
+                )
+              })}
 
-                {showAddrow ? <AddNewUser addRowFlag={addRowFlag} addNewRow={addNewRow} /> : ''}
-                {/* <AddNewUser/> */}
-              </tbody>
+              {showAddrow ? <AddNewUser addRowFlag={addRowFlag} addNewRow={addNewRow} /> : ''}
+              {/* <AddNewUser/> */}
+            </tbody>
           </table>
         </form>
       </FormProvider>
+      <>      {All_Employee_Data.length > 0 ?console.log('true')
+      :<h1 className="NODATA" >NO DATA FOUND</h1>
+      }
+      </>
+
     </div>
   );
 }
 
-export default Table;
+export default DataTable;
