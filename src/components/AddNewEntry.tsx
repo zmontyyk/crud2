@@ -29,24 +29,22 @@ function AddNewUser({ addNewRow, addRowFlag }: props) {
 
   // Red color flag for Validate
   const getValuess = watch()
-  const [red, setred] = useState(true)
+  const [redBcg, setRedBgc] = useState(true)
 
   const check = () => {
     const isNullish = Object.values(getValuess).every(value => {
-      // console.log(value)
       if (value !== undefined && value !== "") {
-        setred(true)
+        setRedBgc(true)
         return true
       }
-      setred(false)
+      setRedBgc(false)
     })
   }
-
-
+  // to Block "e" in  type='number ' input tag
+    const blockInvalidChar = (e: { key: string; preventDefault: () => any; }) => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();
 
   return (
-
-    <tr className={"animate__animated  animate__fadeIn   " + (red ? "" : "redbox")} >
+    <tr className={"animate__animated  animate__fadeIn   " + (redBcg ? "" : "redbox")} >
       <td><input className="form-control " type="text" placeholder="First Name"
         {...register("firstName", { required: true })}
       />
@@ -69,17 +67,16 @@ function AddNewUser({ addNewRow, addRowFlag }: props) {
       </td>
 
 
-      <td><input className="form-control  " type="number" placeholder="Age"
+      <td><input onKeyDown={blockInvalidChar} className="form-control  " type="number" placeholder="Age"
         {...register("age", { required: true })}
       />
         {errors.age && <span className='text-danger'>required</span>}
 
       </td>
       <td>
-
-
-        <select {...register("gender", { required: true })}>
-          <option value="">Gender</option>
+      
+        <select  defaultValue={'DEFAULT'} className="form-select"  {...register("gender", { required: true })} >
+          <option disabled value="">Choose...</option>
           <option value="female">female</option>
           <option value="male">male</option>
         </select>
@@ -87,16 +84,16 @@ function AddNewUser({ addNewRow, addRowFlag }: props) {
       </td>
       <td>
 
-
         {/* buttons  */}
-        <i
-          onClick={() => addNewRow(false)}
-          className="fa-solid shadow red fa-ban"
-        ></i>
+        <button data-tooltip-content="Discard Changes?" className="bt with-tooltip ">
+          <i
+            onClick={() => addNewRow(false)}
+            className="fa-solid shadow red fa-ban"
+          ></i>
+        </button>
 
-
-        <button id='newRow' onClick={() => check()} className="bt" type="submit">  <i
-          className="fa-solid shadow gren EDIT fa-floppy-disk"
+        <button id='newRow' data-tooltip-content="Save Data!" onClick={() => check()} className="bt with-tooltip " type="submit">  <i
+          className="fa-solid shadow gren EDIT fa-floppy-disk "
         ></i></button>
         {/* <input type="submit" /> */}
       </td>

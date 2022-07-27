@@ -48,24 +48,29 @@ function Edit_User() {
   // Red color flag for Validate
 
   const getValuess = watch()
-  const [red, setred] = useState(true)
+  const [redBcg, setredBcg] = useState(true)
 
 
   const check = () => {
     const isNullish = Object.values(getValuess).every(value => {
-      // console.log(value)
       if (value !== undefined && value !== "") {
-        setred(true)
+        setredBcg(true)
         return true
       }
-      setred(false)
+      setredBcg(false)
     })
   }
+
+
+  // to Block "e" in  type='number ' input tag
+  const blockInvalidChar = (e: { key: string; preventDefault: () => any; }) => ['e', 'E', '+', '-'].includes(e.key) && e.preventDefault();
+
+
 
   return (
 
     <>
-      <tr className={"animate__animated  animate__fadeIn   " + (red ? "" : "redbox")} >
+      <tr className={"animate__animated  animate__fadeIn   " + (redBcg ? "" : "redbox")} >
         <td><input className="form-control" type="text" placeholder="First Name"
           {...register("firstName", { required: true })}
         />
@@ -83,17 +88,18 @@ function Edit_User() {
           {errors.email?.type === 'pattern' && <span className="text-danger" > Invalid e-mail</span>}
 
         </td>
-        <td><input className="form-control" type="number" placeholder="Age"
+        <td><input onKeyDown={blockInvalidChar} className="form-control" type="number" placeholder="Age"
           {...register("age", { required: true })}
         />
           {errors.age && <span className='text-danger'>required</span>}
         </td>
 
         <td>
-            <select {...register("gender")}>
-              <option value="female">female</option>
-              <option value="male">male</option>
-            </select>
+          <select  defaultValue={'DEFAULT'} className="form-select"  {...register("gender", { required: true })} required>
+            <option  disabled value="">Choose...</option>
+            <option value="female">female</option>
+            <option value="male">male</option>
+          </select>
         </td>
         <td>
 
@@ -103,7 +109,6 @@ function Edit_User() {
             onClick={() => hideRow()}
           >
             <i
-
               className="fa-solid shadow red fa-ban"
             ></i>
           </button>

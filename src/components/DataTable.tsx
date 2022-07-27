@@ -4,7 +4,7 @@ import { ADD_USER, EDit_ROW_ID, Fetch_DATA, UPDATE_USER } from "../Actions/actio
 import { useDispatch, useSelector } from "react-redux";
 import { employeeData, Inputs, RootState } from "../models/models";
 import Edit_User from './EditRows'
-import ReadOnly from "./ReadOnlyRows";
+import ReadOnly from "./ReadOnly";
 import { useForm, FormProvider } from "react-hook-form";
 import AddNewUser from "./AddNewEntry";
 
@@ -19,7 +19,7 @@ function DataTable() {
   }
 
   const addRowFlag = () => {
-    console.log('addRowFlag')
+
     setshowAddrow(true)
     dispatch(EDit_ROW_ID(null))
   }
@@ -96,7 +96,7 @@ function DataTable() {
           </table>
         </form>
       </FormProvider>
-      <>      {All_Employee_Data.length > 0 ?console.log('true')
+      <>      {All_Employee_Data.length > 0 ?""
       :<h1 className="NODATA" >NO DATA FOUND</h1>
       }
       </>

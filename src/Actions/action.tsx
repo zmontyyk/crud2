@@ -21,7 +21,6 @@ export const REMOVE_USER = ((id: number) => {
   return async (dispatch:any ) => {
     try {
       const res = await axios.delete(`http://localhost:3000/employees/${id}`)
-      console.log(res)
       dispatch(Fetch_DATA())
     } catch (error) {
 
@@ -68,6 +67,7 @@ export const UPDATE_USER = (fromvalue:any,id:number) => {
     try {
       const res = await axios.put(`http://localhost:3000/employees/${id}`,fromvalue)
       dispatch(Fetch_DATA())
+      dispatch(SnackMSg(`${res.data.firstName} Updated successfully `))
     } catch (error) {
 
       console.log(error)
@@ -80,11 +80,20 @@ console.log(fromvalue)
   return async (dispatch: any) => {
     try {
       const res = await axios.post(`http://localhost:3000/employees`,fromvalue)
-      console.log(res)
+      console.log(res.data.firstName)
       dispatch(Fetch_DATA())
+      dispatch(SnackMSg(`${res.data.firstName} Added successfully `))
     } catch (error) {
 
       console.log(error)
     }
   }
 } 
+
+
+export const SnackMSg =(name:string | null)=>{
+  return{
+    type:"SNACK_NAME",
+    payload:name
+  }
+}

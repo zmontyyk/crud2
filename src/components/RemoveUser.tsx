@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import { REMOVE_USER } from "../Actions/action";
 import { useDispatch } from "react-redux";
 import { Remove_User_Props } from "../models/models";
+import {SnackMSg} from '../Actions/action';
 
 
 
@@ -20,7 +21,9 @@ function Remove_User({ deleteID, cleanUp }: Remove_User_Props) {
   const handleCloseYES = (id: number) => {
     setShow(false)
     cleanUp()
-    dispatch(REMOVE_USER(id));
+    dispatch(REMOVE_USER(id))
+    dispatch(SnackMSg(`${deleteID.firstName} Deleted successfully !`))
+
   };
 
   useMemo(() => {
@@ -30,7 +33,8 @@ function Remove_User({ deleteID, cleanUp }: Remove_User_Props) {
   }, [deleteID])
 
   return (
-    <div >
+    < >
+    
       <Modal show={show}>
         <Modal.Header onClick={() => handleCloseNO()} closeButton>
           <Modal.Title>Delete User !!!</Modal.Title>
@@ -56,7 +60,7 @@ function Remove_User({ deleteID, cleanUp }: Remove_User_Props) {
           </Button>
         </Modal.Footer>
       </Modal>
-    </div>
+    </>
   );
 }
 
